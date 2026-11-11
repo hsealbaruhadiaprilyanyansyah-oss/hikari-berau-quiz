@@ -656,16 +656,20 @@ HTML
             });
         }
 
-        function startHostTimer(seconds, qIndex) {
+       function startHostTimer(seconds, qIndex) {
             let timeLeft = seconds;
             const timerEl = document.getElementById('host-timer-circle');
-            timerEl.innerText = timeLeft;
+            if(timerEl) timerEl.innerText = timeLeft;
 
             if(timerInterval) clearInterval(timerInterval);
 
             timerInterval = setInterval(async () => {
                 timeLeft--;
-                timerEl.innerText = timeLeft;
+                if(timerEl) timerEl.innerText = timeLeft;
+
+                // Opsional: Update waktu ke Firestore agar peserta bisa membaca sisa waktu jika diperlukan
+                // (Bisa juga dibiarkan berjalan mandiri di HP peserta berdasarkan durasi soal)
+
                 if(timeLeft <= 0) {
                     clearInterval(timerInterval);
                     revealHostResults(qIndex);
