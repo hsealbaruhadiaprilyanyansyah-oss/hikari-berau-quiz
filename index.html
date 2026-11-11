@@ -289,51 +289,53 @@ HTML
             </div>
         </div>
 
-        <!-- SCREEN 5: PLAYER ANSWER INPUT -->
-        <div id="screen-player-game" class="hidden w-full max-w-md flex-col space-y-4">
-            <div class="bg-purple-950/40 p-3 rounded-2xl backdrop-blur-md flex justify-between items-center text-sm font-bold border border-purple-400/20">
-                <span>Soal <span id="player-q-num">1</span></span>
-                <span id="player-status-badge" class="text-yellow-300">Pilih Jawaban!</span>
-            </div>
+       <!-- SCREEN 5: PLAYER ANSWER INPUT -->
+<div id="screen-player-game" class="hidden w-full max-w-md flex-col space-y-4">
+    <!-- Header Soal & Timer Peserta -->
+    <div class="bg-purple-950/40 p-3 rounded-2xl backdrop-blur-md flex justify-between items-center text-sm font-bold border border-purple-400/20">
+        <span>Soal <span id="player-q-num">1</span></span>
+        
+        <!-- ELEMEN TIMER INI WAJIB ADA DI HTML -->
+        <span class="bg-yellow-400 text-purple-950 px-3 py-1 rounded-full font-black shadow-md">
+            ⏱️ <span id="player-timer-display">20</span>s
+        </span>
+        
+        <span id="player-status-badge" class="text-yellow-300">Pilih Jawaban!</span>
+    </div>
 
-            <!-- KOTAK TEKS PERTANYAAN DI LAYAR PESERTA -->
-            <div class="bg-white text-purple-950 p-4 rounded-2xl shadow-xl text-center min-h-[80px] flex items-center justify-center border-2 border-purple-300">
-                <h3 id="player-question-text" class="text-lg font-extrabold leading-snug">
-                    Memuat Soal...
-                </h3>
-            </div>
+    <!-- Kotak Teks Pertanyaan -->
+    <div class="bg-white text-purple-950 p-4 rounded-2xl shadow-xl text-center min-h-[80px] flex items-center justify-center border-2 border-purple-300">
+        <h3 id="player-question-text" class="text-lg font-extrabold leading-snug">
+            Memuat Soal...
+        </h3>
+    </div>
+    
+    <!-- Tombol Pilihan Jawaban -->
+    <div id="player-buttons-grid" class="grid grid-cols-2 gap-4">
+        <button onclick="submitPlayerAnswer(0)" class="bg-opt-red hover-opt-red rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 transition transform active:scale-95 duration-150 space-y-2 min-h-[120px]">
+            <i class="fas fa-caret-up text-white text-4xl"></i>
+            <span id="player-opt-text-0" class="text-white font-bold text-sm text-center">Opsi 1</span>
+        </button>
+        <button onclick="submitPlayerAnswer(1)" class="bg-opt-blue hover-opt-blue rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 transition transform active:scale-95 duration-150 space-y-2 min-h-[120px]">
+            <i class="fas fa-gem text-white text-3xl"></i>
+            <span id="player-opt-text-1" class="text-white font-bold text-sm text-center">Opsi 2</span>
+        </button>
+        <button onclick="submitPlayerAnswer(2)" class="bg-opt-yellow hover-opt-yellow rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 transition transform active:scale-95 duration-150 space-y-2 min-h-[120px]">
+            <i class="fas fa-circle text-white text-3xl"></i>
+            <span id="player-opt-text-2" class="text-white font-bold text-sm text-center">Opsi 3</span>
+        </button>
+        <button onclick="submitPlayerAnswer(3)" class="bg-opt-green hover-opt-green rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 transition transform active:scale-95 duration-150 space-y-2 min-h-[120px]">
+            <i class="fas fa-square text-white text-3xl"></i>
+            <span id="player-opt-text-3" class="text-white font-bold text-sm text-center">Opsi 4</span>
+        </button>
+    </div>
 
-            <div id="player-buttons-grid" class="grid grid-cols-2 gap-4">
-                <button onclick="submitPlayerAnswer(0)" class="bg-opt-red hover-opt-red rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
-                    <i class="fas fa-caret-up text-white text-4xl"></i>
-                    <span id="player-opt-text-0" class="text-white font-bold text-sm text-center">Opsi 1</span>
-                </button>
-                <button onclick="submitPlayerAnswer(1)" class="bg-opt-blue hover-opt-blue rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
-                    <i class="fas fa-gem text-white text-3xl"></i>
-                    <span id="player-opt-text-1" class="text-white font-bold text-sm text-center">Opsi 2</span>
-                </button>
-                <button onclick="submitPlayerAnswer(2)" class="bg-opt-yellow hover-opt-yellow rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
-                    <i class="fas fa-circle text-white text-3xl"></i>
-                    <span id="player-opt-text-2" class="text-white font-bold text-sm text-center">Opsi 3</span>
-                </button>
-                <button onclick="submitPlayerAnswer(3)" class="bg-opt-green hover-opt-green rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
-                    <i class="fas fa-square text-white text-3xl"></i>
-                    <span id="player-opt-text-3" class="text-white font-bold text-sm text-center">Opsi 4</span>
-                </button>
-            </div>
-
-            <div id="player-submitted-screen" class="hidden h-[350px] bg-purple-950/40 backdrop-blur-md rounded-3xl border border-purple-400/30 flex-col items-center justify-center p-6 text-center space-y-4">
-                <i class="fas fa-check-circle text-6xl text-emerald-400 animate-bounce"></i>
-                <h3 class="text-2xl font-black">Jawaban Terkirim!</h3>
-                <p class="text-sm text-purple-200">Menunggu hasil dari Host Hikari Berau...</p>
-            </div>
-
-            <div id="player-feedback-screen" class="hidden h-[350px] rounded-3xl flex flex-col items-center justify-center p-6 text-center space-y-4 shadow-2xl">
-                <div id="feedback-icon" class="text-7xl"></div>
-                <h3 id="feedback-title" class="text-3xl font-black"></h3>
-                <p id="feedback-score-gained" class="text-xl font-bold bg-black/30 px-6 py-2 rounded-full border border-white/10"></p>
-            </div>
-        </div>
+    <div id="player-submitted-screen" class="hidden h-[350px] bg-purple-950/40 backdrop-blur-md rounded-3xl border border-purple-400/30 flex-col items-center justify-center p-6 text-center space-y-4">
+        <i class="fas fa-check-circle text-6xl text-emerald-400 animate-bounce"></i>
+        <h3 class="text-2xl font-black">Jawaban Terkirim!</h3>
+        <p class="text-sm text-purple-200">Menunggu hasil dari Host Hikari Berau...</p>
+    </div>
+</div>
 
         <!-- SCREEN 6: LEADERBOARD -->
         <div id="screen-leaderboard" class="hidden w-full max-w-2xl bg-purple-950/40 backdrop-blur-xl p-8 rounded-3xl border border-purple-400/30 space-y-6 shadow-2xl">
