@@ -296,18 +296,29 @@ HTML
                 <span id="player-status-badge" class="text-yellow-300">Pilih Jawaban!</span>
             </div>
 
-            <div id="player-buttons-grid" class="grid grid-cols-2 gap-4 h-[350px]">
-                <button onclick="submitPlayerAnswer(0)" class="bg-opt-red hover-opt-red rounded-3xl flex items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition">
-                    <i class="fas fa-caret-up text-white text-7xl"></i>
+            <!-- KOTAK TEKS PERTANYAAN DI LAYAR PESERTA -->
+            <div class="bg-white text-purple-950 p-4 rounded-2xl shadow-xl text-center min-h-[80px] flex items-center justify-center border-2 border-purple-300">
+                <h3 id="player-question-text" class="text-lg font-extrabold leading-snug">
+                    Memuat Soal...
+                </h3>
+            </div>
+
+            <div id="player-buttons-grid" class="grid grid-cols-2 gap-4">
+                <button onclick="submitPlayerAnswer(0)" class="bg-opt-red hover-opt-red rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
+                    <i class="fas fa-caret-up text-white text-4xl"></i>
+                    <span id="player-opt-text-0" class="text-white font-bold text-sm text-center">Opsi 1</span>
                 </button>
-                <button onclick="submitPlayerAnswer(1)" class="bg-opt-blue hover-opt-blue rounded-3xl flex items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition">
-                    <i class="fas fa-gem text-white text-6xl"></i>
+                <button onclick="submitPlayerAnswer(1)" class="bg-opt-blue hover-opt-blue rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
+                    <i class="fas fa-gem text-white text-3xl"></i>
+                    <span id="player-opt-text-1" class="text-white font-bold text-sm text-center">Opsi 2</span>
                 </button>
-                <button onclick="submitPlayerAnswer(2)" class="bg-opt-yellow hover-opt-yellow rounded-3xl flex items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition">
-                    <i class="fas fa-circle text-white text-6xl"></i>
+                <button onclick="submitPlayerAnswer(2)" class="bg-opt-yellow hover-opt-yellow rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
+                    <i class="fas fa-circle text-white text-3xl"></i>
+                    <span id="player-opt-text-2" class="text-white font-bold text-sm text-center">Opsi 3</span>
                 </button>
-                <button onclick="submitPlayerAnswer(3)" class="bg-opt-green hover-opt-green rounded-3xl flex items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition">
-                    <i class="fas fa-square text-white text-6xl"></i>
+                <button onclick="submitPlayerAnswer(3)" class="bg-opt-green hover-opt-green rounded-3xl flex flex-col items-center justify-center p-6 shadow-xl border-4 border-white/20 active:scale-90 transition space-y-2 min-h-[120px]">
+                    <i class="fas fa-square text-white text-3xl"></i>
+                    <span id="player-opt-text-3" class="text-white font-bold text-sm text-center">Opsi 4</span>
                 </button>
             </div>
 
