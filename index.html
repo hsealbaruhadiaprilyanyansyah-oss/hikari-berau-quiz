@@ -404,19 +404,21 @@ HTML
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
 
         // Konfigurasi Firebase Asli Milik Anda
-        const firebaseConfig = {
-            apiKey: "AIzaSyCAMhZZV4Bk6n1YEqt-E84Megq2QR50tnE",
+       const firebaseConfig = {
+            apiKey: "AIzaSyCAMhZZV4Bk6n1YEqt-E84mEgq2QR50tnE",
             authDomain: "hikari-berau-quiz.firebaseapp.com",
             projectId: "hikari-berau-quiz",
             storageBucket: "hikari-berau-quiz.firebasestorage.app",
             messagingSenderId: "4085395851",
             appId: "1:4085395851:web:0c008ee75ebe62d2243f8e",
-            measurementId: "G-2DQFL5RJT"
+            measurementId: "G-2DQ0FL5RJT"
         };
 
         const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
         const auth = getAuth(app);
         const db = getFirestore(app);
 
