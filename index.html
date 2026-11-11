@@ -765,7 +765,8 @@ HTML
             try { confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } }); } catch(e){}
         }
 
-        // Player Listeners & Answers
+    
+      // Player Listeners & Answers
         function listenRoomPlayer() {
             roomUnsubscribe = onSnapshot(doc(db, "rooms", gamePin), (snap) => {
                 if(!snap.exists()) return;
@@ -777,13 +778,32 @@ HTML
                     document.getElementById('player-submitted-screen').classList.add('hidden');
                     document.getElementById('player-feedback-screen').classList.add('hidden');
                     document.getElementById('player-buttons-grid').classList.remove('hidden');
-                    document.getElementById('player-q-num').innerText = data.currentQuestion + 1;
+                    
+                    // 1. Tampilkan nomor soal
+                    const qIdx = data.currentQuestion !== undefined ? data.currentQuestion : 0;
+                    document.getElementById('player-q-num').innerText = qIdx + 1;
+
+                    // 2. Ambil dan Tampilkan Teks Pertanyaan serta Opsi dari Database Room
+                    if (data.questions && data.questions[qIdx]) {
+                        const currentQ = data.questions[qIdx];
+                        
+                        // Tampilkan teks soal
+                        const qTextEl = document.getElementById('player-question-text');
+                        if (qTextEl) qTextEl.innerText = currentQ.q;
+
+                        // Tampilkan teks pilihan jawaban ke masing-masing tombol (0 sampai 3)
+                        for (let i = 0; i < 4; i++) {
+                            const optEl = document.getElementById(`player-opt-text-${i}`);
+                            if (optEl) {
+                                optEl.innerText = currentQ.options[i] || "";
+                            }
+                        }
+                    }
                 } else if(data.status === "podium") {
                     document.getElementById('screen-player-game').classList.add('hidden');
                 }
             });
         }
-
         window.submitPlayerAnswer = async function(optIndex) {
             document.getElementById('player-buttons-grid').classList.add('hidden');
             document.getElementById('player-submitted-screen').classList.remove('hidden');
